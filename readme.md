@@ -43,7 +43,7 @@ Demonstrates [testing of Artisan commands](https://github.com/janhenkgerritsen/c
 
 ### API Tests
 
-Demonstrates functional [testing of API](https://github.com/janhenkgerritsen/codeception-laravel5-sample/blob/master/tests%2Fapi%2FPostsResourceCest.php) using REST and Laravel4 modules connected, with
+Demonstrates functional [testing of API](https://github.com/janhenkgerritsen/codeception-laravel5-sample/blob/master/tests%2Fapi%2FPostsResourceCest.php) using REST and Laravel5 modules connected, with
 
 * partial json inclusion in response
 * GET/POST/PUT/DELETE requests
