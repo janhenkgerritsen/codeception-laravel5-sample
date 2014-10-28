@@ -1,0 +1,19 @@
+language: php
+
+php:
+  - 5.5
+  - 5.4
+  - hhvm
+
+matrix:
+  allow_failures:
+    - php: hhvm
+
+before_script:
+  - touch storage/database.sqlite
+  - composer install -n --prefer-source
+  - php artisan migrate --env=testing
+  - ./vendor/bin/codecept build
+
+script:
+  - ./vendor/bin/codecept run
