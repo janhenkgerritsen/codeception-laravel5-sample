@@ -16,6 +16,6 @@ return [
 	|
 	*/
 
-	'driver' => 'array',
+	'driver' => 'native',
 
 ];

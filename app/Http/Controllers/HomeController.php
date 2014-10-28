@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller {
 
@@ -23,4 +25,47 @@ class HomeController extends Controller {
 		return view('hello');
 	}
 
+
+	/**
+	 * @Get("/flash")
+	 */
+	public function flash()
+	{
+		Session::flash('message', "It's a flash");
+
+		return view('flash');
+	}
+
+	/**
+	 * @Get("/back")
+	 *
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function back()
+	{
+		return redirect()->back();
+	}
+
+	/**
+	 * @Get("/secure")
+	 * @Middleware("auth")
+	 *
+	 * @return \Illuminate\View\View
+	 */
+	public function secure()
+	{
+		return view('hello');
+	}
+
+	/**
+	 * @Get("/session/{message}")
+	 *
+	 * @param Request $request
+	 * @param $message
+	 * @return void
+	 */
+	public function session(Request $request, $message)
+	{
+		$request->session()->set('message', $message);
+	}
 }

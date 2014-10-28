@@ -6,3 +6,5 @@
 Thumbs.db
 composer.lock
 composer.phar
+tests/_output
+storage/database.sqlite

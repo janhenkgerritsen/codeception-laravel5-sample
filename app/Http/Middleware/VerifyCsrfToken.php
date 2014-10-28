@@ -17,7 +17,7 @@ class VerifyCsrfToken implements Middleware {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if ($request->method() == 'GET' || $this->tokensMatch($request))
+		if ($request->method() == 'GET' || $this->tokensMatch($request) || $this->isApiRequest($request))
 		{
 			return $next($request);
 		}
@@ -36,4 +36,13 @@ class VerifyCsrfToken implements Middleware {
 		return $request->session()->token() == $request->input('_token');
 	}
 
+	/**
+	 * Is this an API request?
+	 * @param $request
+	 * @return bool
+	 */
+	protected function isApiRequest($request)
+	{
+		return (boolean) preg_match('/^api/', $request->path());
+	}
 }

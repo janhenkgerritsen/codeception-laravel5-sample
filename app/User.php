@@ -24,4 +24,6 @@ class User extends Model implements UserContract, CanResetPasswordContract {
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+	protected $fillable = ['email', 'password'];
+
 }
