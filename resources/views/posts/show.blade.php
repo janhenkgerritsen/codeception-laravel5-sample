@@ -10,7 +10,7 @@
     <thead>
         <tr>
             <th>Title</th>
-				<th>Body</th>
+            <th>Body</th>
         </tr>
     </thead>
 
@@ -20,9 +20,9 @@
             <td>{{ $post->body }}</td>
             <td>{!! link_to_route('posts.edit', 'Edit', array($post->id), array('class' => 'btn btn-info')) !!}</td>
             <td>
-                {!! form::open(array('method' => 'delete', 'route' => array('posts.destroy', $post->id))) !!}
+                {!! Form::open(array('method' => 'delete', 'route' => array('posts.destroy', $post->id))) !!}
                     {!! form::submit('Delete', array('class' => 'btn btn-danger')) !!}
-                {!! form::close() !!}
+                {!! Form::close() !!}
             </td>
         </tr>
     </tbody>
