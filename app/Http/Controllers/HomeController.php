@@ -68,4 +68,27 @@ class HomeController extends Controller {
 	{
 		$request->session()->set('message', $message);
 	}
+
+	/**
+	 * @Get("/form")
+	 *
+	 * @return \Illuminate\View\View
+     */
+	public function form()
+	{
+		return view('form');
+	}
+
+	/**
+	 * @Post("/form/result")
+	 *
+	 * @param Request $request
+	 * @return \Illuminate\View\View
+     */
+	public function formResult(Request $request)
+	{
+		$message = $request->get('message');
+
+		return view('form-result', compact('message'));
+	}
 }
