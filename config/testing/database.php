@@ -2,13 +2,11 @@
 
 return [
 
-	'default' => 'sqlite',
-
 	'connections' => [
 
 		'sqlite' => [
 			'driver'   => 'sqlite',
-			'database' => storage_path().'/database.sqlite',
+			'database' => storage_path().'/testing.sqlite',
 			'prefix'   => '',
 		],
 

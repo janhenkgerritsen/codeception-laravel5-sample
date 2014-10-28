@@ -8,3 +8,4 @@ composer.lock
 composer.phar
 tests/_output
 storage/database.sqlite
+storage/testing.sqlite

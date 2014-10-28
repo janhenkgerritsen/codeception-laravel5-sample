@@ -5,13 +5,9 @@ php:
   - 5.4
   - hhvm
 
-matrix:
-  allow_failures:
-    - php: hhvm
-
 before_script:
-  - touch storage/database.sqlite
-  - composer install -n --prefer-source
+  - touch storage/testing.sqlite
+  - composer install -n --prefer-dist
   - php artisan migrate --env=testing
   - ./vendor/bin/codecept build
 
