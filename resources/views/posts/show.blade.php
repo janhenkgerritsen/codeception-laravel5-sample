@@ -21,7 +21,7 @@
             <td>{!! link_to_route('posts.edit', 'Edit', array($post->id), array('class' => 'btn btn-info')) !!}</td>
             <td>
                 {!! Form::open(array('method' => 'delete', 'route' => array('posts.destroy', $post->id))) !!}
-                    {!! form::submit('Delete', array('class' => 'btn btn-danger')) !!}
+                    {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
                 {!! Form::close() !!}
             </td>
         </tr>
