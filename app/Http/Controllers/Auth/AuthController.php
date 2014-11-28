@@ -1,13 +1,10 @@
 <?php namespace App\Http\Controllers\Auth;
 
-use Illuminate\Routing\Controller;
+use App\User;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Http\Requests\Auth\RegisterRequest;
 
-/**
- * @Middleware("guest", except={"logout"})
- */
 class AuthController extends Controller {
 
 	/**
@@ -26,16 +23,16 @@ class AuthController extends Controller {
 	public function __construct(Guard $auth)
 	{
 		$this->auth = $auth;
+
+		$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
 	/**
 	 * Show the application registration form.
 	 *
-	 * @Get("auth/register")
-	 *
 	 * @return Response
 	 */
-	public function showRegistrationForm()
+	public function getRegister()
 	{
 		return view('auth.register');
 	}
@@ -43,28 +40,28 @@ class AuthController extends Controller {
 	/**
 	 * Handle a registration request for the application.
 	 *
-	 * @Post("auth/register")
-	 *
 	 * @param  RegisterRequest  $request
 	 * @return Response
 	 */
-	public function register(RegisterRequest $request)
+	public function postRegister(Requests\Auth\RegisterRequest $request)
 	{
-		// Registration form is valid, create user...
+		$user = User::forceCreate([
+			'name' => $request->name,
+			'email' => $request->email,
+			'password' => bcrypt($request->password),
+		]);
 
 		$this->auth->login($user);
 
-		return redirect('/');
+		return redirect('/home');
 	}
 
 	/**
 	 * Show the application login form.
 	 *
-	 * @Get("auth/login")
-	 *
 	 * @return Response
 	 */
-	public function showLoginForm()
+	public function getLogin()
 	{
 		return view('auth.login');
 	}
@@ -72,31 +69,31 @@ class AuthController extends Controller {
 	/**
 	 * Handle a login request to the application.
 	 *
-	 * @Post("auth/login")
-	 *
 	 * @param  LoginRequest  $request
 	 * @return Response
 	 */
-	public function login(LoginRequest $request)
+	public function postLogin(Requests\Auth\LoginRequest $request)
 	{
-		if ($this->auth->attempt($request->only('email', 'password')))
+		$credentials = $request->only('email', 'password');
+
+		if ($this->auth->attempt($credentials, $request->has('remember')))
 		{
-			return redirect('/');
+			return redirect('/home');
 		}
 
-		return redirect('/auth/login')->withErrors([
-			'email' => 'These credentials do not match our records.',
-		]);
+		return redirect('/auth/login')
+					->withInput($request->only('email'))
+					->withErrors([
+						'email' => 'These credentials do not match our records.',
+					]);
 	}
 
 	/**
 	 * Log the user out of the application.
 	 *
-	 * @Get("auth/logout")
-	 *
 	 * @return Response
 	 */
-	public function logout()
+	public function getLogout()
 	{
 		$this->auth->logout();
 

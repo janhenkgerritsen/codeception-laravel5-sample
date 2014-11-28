@@ -1,14 +1,20 @@
 <?php namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use App\User;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-/**
- * @Middleware("guest")
- */
 class PasswordController extends Controller {
+
+	/**
+	 * The Guard implementation.
+	 *
+	 * @var Guard
+	 */
+	protected $auth;
 
 	/**
 	 * The password broker implementation.
@@ -23,70 +29,65 @@ class PasswordController extends Controller {
 	 * @param  PasswordBroker  $passwords
 	 * @return void
 	 */
-	public function __construct(PasswordBroker $passwords)
+	public function __construct(Guard $auth, PasswordBroker $passwords)
 	{
+		$this->auth = $auth;
 		$this->passwords = $passwords;
+
+		$this->middleware('guest');
 	}
 
 	/**
 	 * Display the form to request a password reset link.
 	 *
-	 * @Get("password/email")
-	 *
 	 * @return Response
 	 */
-	public function showResetRequestForm()
+	public function getEmail()
 	{
-		return view('password.email');
+		return view('auth.password');
 	}
 
 	/**
 	 * Send a reset link to the given user.
 	 *
-	 * @Post("password/email")
-	 *
-	 * @param  Request  $request
+	 * @param  EmailPasswordLinkRequest  $request
 	 * @return Response
 	 */
-	public function sendResetLink(Request $request)
+	public function postEmail(Requests\Auth\EmailPasswordLinkRequest $request)
 	{
 		switch ($response = $this->passwords->sendResetLink($request->only('email')))
 		{
-			case PasswordBroker::INVALID_USER:
-				return redirect()->back()->with('error', trans($response));
-
 			case PasswordBroker::RESET_LINK_SENT:
 				return redirect()->back()->with('status', trans($response));
+
+			case PasswordBroker::INVALID_USER:
+				return redirect()->back()->withErrors(['email' =>trans($response)]);
 		}
 	}
 
 	/**
 	 * Display the password reset view for the given token.
 	 *
-	 * @Get("password/reset/{token}")
-	 *
 	 * @param  string  $token
 	 * @return Response
 	 */
-	public function showResetForm($token = null)
+	public function getReset($token = null)
 	{
 		if (is_null($token))
 		{
 			throw new NotFoundHttpException;
 		}
 
-		return view('password.reset')->with('token', $token);
+		return view('auth.reset')->with('token', $token);
 	}
 
 	/**
 	 * Reset the given user's password.
 	 *
-	 * @Post("password/reset")
-	 *
-	 * @param  Request  $request
+	 * @param  ResetPasswordRequest  $request
 	 * @return Response
 	 */
-	public function resetPassword(Request $request)
+	public function postReset(Requests\Auth\ResetPasswordRequest $request)
 	{
 		$credentials = $request->only(
 			'email', 'password', 'password_confirmation', 'token'
@@ -101,14 +102,27 @@ class PasswordController extends Controller {
 
 		switch ($response)
 		{
-			case PasswordBroker::INVALID_PASSWORD:
-			case PasswordBroker::INVALID_TOKEN:
-			case PasswordBroker::INVALID_USER:
-				return redirect()->back()->with('error', trans($response));
-
 			case PasswordBroker::PASSWORD_RESET:
-				return redirect()->to('/');
+				return $this->loginAndRedirect($request->email);
+
+			default:
+				return redirect()->back()
+							->withInput($request->only('email'))
+							->withErrors(['email' => trans($response)]);
 		}
+	}
+
+	/**
+	 * Login the user with the given e-mail address and redirect home.
+	 *
+	 * @param  string  $email
+	 * @return Response
+	 */
+	protected function loginAndRedirect($email)
+	{
+		$this->auth->login(User::where('email', $email)->firstOrFail());
+
+		return redirect('/home');
 	}
 
 }

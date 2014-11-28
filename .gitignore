@@ -1,6 +1,4 @@
-/.idea
 /vendor
-/node_modules
 .env
 .DS_Store
 Thumbs.db
@@ -9,3 +7,4 @@ composer.phar
 tests/_output
 storage/database.sqlite
 storage/testing.sqlite
+.idea
