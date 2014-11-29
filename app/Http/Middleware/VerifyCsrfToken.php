@@ -13,7 +13,6 @@ class VerifyCsrfToken extends \Illuminate\Foundation\Http\Middleware\VerifyCsrfT
     {
         // Do not perform CSRF checks for API requests
         if (preg_match("#^/api#", $request->path()) !== false) {
-
             return $next($request);
         }
 
