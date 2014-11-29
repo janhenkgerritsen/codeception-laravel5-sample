@@ -1,11 +1,10 @@
 <?php namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\PostStoreRequest;
-use App\Http\Requests\PostUpdateRequest;
 use App\Post;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Illuminate\Routing\ResponseFactory;
 
 /**
