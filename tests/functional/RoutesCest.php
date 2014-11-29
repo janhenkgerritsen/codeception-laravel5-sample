@@ -15,12 +15,12 @@ class RoutesCest
     {
         $I->amOnRoute('posts.index');
         $I->seeCurrentUrlEquals('/posts');
-        $I->seeCurrentActionIs('App\Http\Controllers\PostsController@index');
+        $I->seeCurrentActionIs('PostsController@index');
     }
 
     public function openPageByAction(FunctionalTester $I)
     {
-        $I->amOnAction('App\Http\Controllers\PostsController@index');
+        $I->amOnAction('PostsController@index');
         $I->seeCurrentUrlEquals('/posts');
         $I->seeCurrentRouteIs('posts.index');
     }
