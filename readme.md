@@ -12,7 +12,7 @@
 - Run the following commands:
     - `php artisan migrate`
     - `php artisan migrate --env=testing`
-- Server: run `php artisan serve`
+- Server: run `php -S localhost:8000 -t public`
 - Browse to localhost:8000/posts
 
 ### To test
