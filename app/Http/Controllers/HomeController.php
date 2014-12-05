@@ -6,16 +6,23 @@ use Illuminate\Support\Facades\Session;
 class HomeController extends Controller {
 
 	/**
-	 * @Get("/")
+	 * Constructor.
+	 */
+	public function __construct()
+	{
+		$this->middleware('auth', ['only' => 'secure']);
+	}
+
+	/**
+	 * @return \Illuminate\View\View
 	 */
 	public function index()
 	{
 		return view('hello');
 	}
 
-
 	/**
-	 * @Get("/flash")
+	 * @return \Illuminate\View\View
 	 */
 	public function flash()
 	{
@@ -25,8 +32,6 @@ class HomeController extends Controller {
 	}
 
 	/**
-	 * @Get("/back")
-	 *
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function back()
@@ -35,9 +40,6 @@ class HomeController extends Controller {
 	}
 
 	/**
-	 * @Get("/secure")
-	 * @Middleware("auth")
-	 *
 	 * @return \Illuminate\View\View
 	 */
 	public function secure()
@@ -46,8 +48,6 @@ class HomeController extends Controller {
 	}
 
 	/**
-	 * @Get("/session/{message}")
-	 *
 	 * @param Request $request
 	 * @param $message
 	 * @return void
@@ -58,25 +58,13 @@ class HomeController extends Controller {
 	}
 
 	/**
-	 * @Get("/form")
-	 *
 	 * @return \Illuminate\View\View
      */
-	public function form()
+	public function form(Request $request)
 	{
-		return view('form');
+		$message = $request->get('message', '');
+
+		return view('form', compact('message'));
 	}
 
-	/**
-	 * @Post("/form/result")
-	 *
-	 * @param Request $request
-	 * @return \Illuminate\View\View
-     */
-	public function formResult(Request $request)
-	{
-		$message = $request->get('message');
-
-		return view('form-result', compact('message'));
-	}
 }

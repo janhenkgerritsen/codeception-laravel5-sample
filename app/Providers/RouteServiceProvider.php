@@ -6,17 +6,6 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 class RouteServiceProvider extends ServiceProvider {
 
 	/**
-	 * @var array
-	 */
-	protected $scan = [
-		'App\Http\Controllers\HomeController',
-		'App\Http\Controllers\Auth\AuthController',
-		'App\Http\Controllers\Auth\PasswordController',
-		'App\Http\Controllers\PostsController',
-		'App\Http\Controllers\Api\PostsController'
-	];
-
-	/**
 	 * This namespace is applied to the controller routes in your routes file.
 	 *
 	 * In addition, it is set as the URL generator's root namespace.

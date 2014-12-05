@@ -4,9 +4,6 @@ use App\Http\Requests\PostStoreRequest;
 use App\Http\Requests\PostUpdateRequest;
 use App\Post;
 
-/**
- * @Resource("posts")
- */
 class PostsController extends Controller {
 
     /**

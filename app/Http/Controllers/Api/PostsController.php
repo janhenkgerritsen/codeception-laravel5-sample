@@ -7,9 +7,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\ResponseFactory;
 
-/**
- * @Resource("api/posts")
- */
 class PostsController extends Controller {
 
     /**
