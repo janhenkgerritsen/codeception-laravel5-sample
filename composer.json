@@ -13,6 +13,7 @@
 		"phpunit/phpunit": "~4.0",
         "codeception/codeception": "~2.0",
         "janhenkgerritsen/codeception-laravel5": "dev-master"
+		"phpspec/phpspec": "~2.1"
 	},
 	"autoload": {
 		"classmap": [
