@@ -4,7 +4,7 @@
     <h1>Register</h1>
     {!! Form::open() !!}
     	{!! Form::label('name', 'Name: ') !!}
-    	{!! Form::email('name') !!}
+    	{!! Form::text('name') !!}
     	{!! $errors->first('name') !!}
 
     	{!! Form::label('email', 'Email: ') !!}
