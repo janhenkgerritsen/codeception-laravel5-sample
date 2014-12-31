@@ -20,6 +20,8 @@ use Codeception\Module\UnitHelper;
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
  * @method void haveFriend($name, $actorClass = null)
+ *
+ * @SuppressWarnings(PHPMD)
 */
 class UnitTester extends \Codeception\Actor
 {

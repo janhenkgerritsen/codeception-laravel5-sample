@@ -21,6 +21,8 @@ use Codeception\Module\CliHelper;
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
  * @method void haveFriend($name, $actorClass = null)
+ *
+ * @SuppressWarnings(PHPMD)
 */
 class CliTester extends \Codeception\Actor
 {

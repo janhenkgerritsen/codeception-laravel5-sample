@@ -5,6 +5,11 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller {
 
+	/**
+	 * URL to redirect to after registering a new user.
+	 */
+	protected $redirectTo = '/';
+
 	/*
 	|--------------------------------------------------------------------------
 	| Registration & Login Controller
