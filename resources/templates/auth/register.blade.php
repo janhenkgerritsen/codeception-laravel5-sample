@@ -1,6 +1,7 @@
 @extends('layouts.scaffold')
 
 @section('main')
+	{!! var_dump(Session::all()) !!}
     <h1>Register</h1>
     {!! Form::open() !!}
     	{!! Form::label('name', 'Name: ') !!}

@@ -13,7 +13,7 @@ class TestingServiceProvider extends ServiceProvider {
     {
         // TODO remove this serviceprovider if bug is fixed
         if ($this->app->environment() == 'testing') {
-            $this->app['config']['session.driver'] = 'native';
+            $this->app['config']['session.driver'] = 'file';
         }
     }
 
