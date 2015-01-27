@@ -1,3 +1,6 @@
 class_name: CliTester
 modules:
     enabled: [Filesystem, Cli, CliHelper]
+    config:
+        Laravel5:
+            environment_file: .env.testing

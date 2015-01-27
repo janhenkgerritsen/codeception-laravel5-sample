@@ -8,7 +8,7 @@ php:
 
 before_script:
   - composer self-update
-  - touch storage/database.sqlite
+  - touch storage/testing.sqlite
   - composer install -n --prefer-dist
   - php artisan migrate --env=testing
   - ./vendor/bin/codecept build
