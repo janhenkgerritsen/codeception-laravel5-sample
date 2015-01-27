@@ -7,6 +7,7 @@ php:
   - hhvm
 
 before_script:
+  - composer self-update
   - touch storage/database.sqlite
   - composer install -n --prefer-dist
   - php artisan migrate --env=testing
