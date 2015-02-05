@@ -3,7 +3,7 @@ $I = new FunctionalTester($scenario);
 $I->wantTo('test session errors');
 
 $I->amOnPage('/auth/register');
-$I->click('input[type=submit]');
+$I->click('button[type=submit]');
 
 $I->seeCurrentUrlEquals('/auth/register');
 $I->seeFormHasErrors();

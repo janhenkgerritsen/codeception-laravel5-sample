@@ -5,15 +5,14 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "~5.0",
-        "illuminate/html": "~5.0",
-		"doctrine/dbal": "~2.5@dev"
+		"laravel/framework": "5.0.*",
+        "illuminate/html": "5.0.*"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
-        "codeception/codeception": "~2.0",
-        "janhenkgerritsen/codeception-laravel5": "dev-master",
-		"phpspec/phpspec": "~2.1"
+		"phpspec/phpspec": "~2.1",
+        "codeception/codeception": "*",
+        "janhenkgerritsen/codeception-laravel5": "*"
 	},
 	"autoload": {
 		"classmap": [
@@ -44,6 +43,5 @@
 	},
 	"config": {
 		"preferred-install": "dist"
-	},
-	"minimum-stability": "dev"
+	}
 }
