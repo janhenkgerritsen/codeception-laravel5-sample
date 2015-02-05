@@ -1,23 +1,47 @@
-## Laravel PHP Framework
+# Sample Laravel Application with Codeception tests.
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+[![Build Status](https://travis-ci.org/janhenkgerritsen/codeception-laravel5-sample.svg?branch=master)](https://travis-ci.org/janhenkgerritsen/codeception-laravel5-sample)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+### Setup
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+- Clone repo
+- Install composer dependencies: `composer install`
+- Create databases by creating the following files:
+    - `storage/database.sqlite`
+    - `storage/testing.sqlite`
+- Run the following commands:
+    - `php artisan migrate`
+    - `php artisan migrate --database=sqlite_testing`
+- Server: run `php -S localhost:8000 -t public`
+- Browse to localhost:8000/posts
 
-## Official Documentation
+### To test
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+Run Codeception, installed via Composer
 
-## Contributing
+```
+./vendor/bin/codecept run
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+## Tests
 
-### License
+Please check out some [good test examples](https://github.com/janhenkgerritsen/codeception-laravel5-sample/tree/master/tests) provided.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+### Functional Tests
+
+Demonstrates testing of [CRUD application](https://github.com/janhenkgerritsen/codeception-laravel5-sample/blob/master/tests/functional/PostCrudCest.php) with
+
+* [PageObjects](https://github.com/janhenkgerritsen/codeception-laravel5-sample/blob/master/tests%2Ffunctional%2F_pages%2FPostsPage.php)
+* [authentication](https://github.com/janhenkgerritsen/codeception-laravel5-sample/blob/master/tests%2Ffunctional%2FAuthCest.php) (by user, credentials, http auth)
+* usage of session variables
+* [routes](https://github.com/janhenkgerritsen/codeception-laravel5-sample/blob/master/tests%2Ffunctional%2FRoutesCest.php)
+* creating and checking records in database
+* testing of form errors
+
+### API Tests
+
+Demonstrates functional [testing of API](https://github.com/janhenkgerritsen/codeception-laravel5-sample/blob/master/tests%2Fapi%2FPostsResourceCest.php) using REST and Laravel5 modules connected, with
+
+* partial json inclusion in response
+* GET/POST/PUT/DELETE requests
+* check changes inside database
