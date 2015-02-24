@@ -25,3 +25,7 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::get('domain-route', ['domain' => 'example.com', 'as' => 'domain', 'uses' => function() {
+    return 'Domain route';
+}]);

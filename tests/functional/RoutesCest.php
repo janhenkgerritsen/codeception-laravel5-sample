@@ -2,15 +2,7 @@
 
 class RoutesCest
 {
-    public function _before(FunctionalTester $I)
-    {
-    }
 
-    public function _after(FunctionalTester $I)
-    {
-    }
-
-    // tests
     public function openPageByRoute(FunctionalTester $I)
     {
         $I->amOnRoute('posts.index');
@@ -24,4 +16,12 @@ class RoutesCest
         $I->seeCurrentUrlEquals('/posts');
         $I->seeCurrentRouteIs('posts.index');
     }
+
+    public function openRouteWithDomainSpecified(FunctionalTester $I)
+    {
+        $I->amOnRoute('domain');
+        $I->seeResponseCodeIs(200);
+        $I->see('Domain route');
+    }
+
 }

@@ -6,13 +6,12 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.0.*",
-        	"illuminate/html": "5.0.*"
+        "illuminate/html": "5.0.*"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1",
-        	"codeception/codeception": "*",
-        	"janhenkgerritsen/codeception-laravel5": "*"
+        "codeception/codeception": "~2.0"
 	},
 	"autoload": {
 		"classmap": [
@@ -40,8 +39,5 @@
 			"php -r \"copy('.env.example', '.env');\"",
 			"php artisan key:generate"
 		]
-	},
-	"config": {
-		"preferred-install": "dist"
 	}
 }
