@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'default' => env('DB_DEFAULT', 'mysql'),
+	'default' => env('DB_DEFAULT', 'sqlite'),
 
 	/*
 	|--------------------------------------------------------------------------

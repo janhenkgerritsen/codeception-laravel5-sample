@@ -5,6 +5,7 @@
 ### Setup
 
 - Clone repo
+- Create your .env file from the example file: `cp .env.testng .env`
 - Install composer dependencies: `composer install`
 - Create databases by creating the following files:
     - `storage/database.sqlite`
