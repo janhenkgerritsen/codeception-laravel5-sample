@@ -16,6 +16,7 @@ Route::get('flash', 'HomeController@flash');
 Route::get('back', 'HomeController@back');
 Route::get('secure', 'HomeController@secure');
 Route::get('session/{message}', 'HomeController@session');
+Route::get('special-characters', 'HomeController@specialCharacters');
 Route::match(['get', 'post'], 'form', 'HomeController@form');
 
 Route::resource('posts', 'PostsController');

@@ -67,4 +67,12 @@ class HomeController extends Controller {
 		return view('form', compact('message'));
 	}
 
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function specialCharacters()
+    {
+        return view('special-characters');
+    }
+
 }
