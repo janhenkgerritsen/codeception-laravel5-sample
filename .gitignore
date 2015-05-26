@@ -4,3 +4,4 @@
 /storage/*.sqlite
 .env
 .idea
+composer.lock
