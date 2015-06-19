@@ -1,12 +1,16 @@
 <?php
 
+namespace Page\Functional;
+
+use FunctionalTester;
+
 class PostsPage
 {
     public static $url = '/posts';
 
     public static function route($param)
     {
-        return static::$url.$param;
+        return static::$url . $param;
     }
 
     public static $formFields = ['title' => '#title', 'body' => 'Body:'];
@@ -57,8 +61,11 @@ class PostsPage
     protected function fillFormFields($data)
     {
         foreach ($data as $field => $value) {
-            if (! isset(static::$formFields[$field])) throw new \Exception("Form field  $field does not exist");
+            if (!isset(static::$formFields[$field])) {
+                throw new \Exception("Form field  $field does not exist");
+            }
             $this->tester->fillField(static::$formFields[$field], $value);
         }
     }
+
 }

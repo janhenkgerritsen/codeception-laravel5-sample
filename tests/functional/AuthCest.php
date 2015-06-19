@@ -1,6 +1,7 @@
 <?php
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Page\Functional\PostsPage;
 
 class AuthCest
 {

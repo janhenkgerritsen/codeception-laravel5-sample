@@ -36,7 +36,7 @@ class PostsResourceCest
         $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();
         $I->seeResponseContainsJson(['title' => 'Game of Rings']);
-        $id = $I->grabDataFromJsonResponse('id');
+        $id = $I->grabDataFromResponseByJsonPath('$.id')[0];
         $I->seeRecord('posts', ['id' => $id, 'title' => 'Game of Rings']);
         $I->sendGET($this->endpoint."/$id");
         $I->seeResponseCodeIs(200);

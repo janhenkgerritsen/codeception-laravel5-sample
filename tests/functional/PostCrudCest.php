@@ -1,5 +1,7 @@
 <?php
 
+use Page\Functional\PostsPage;
+
 class PostCrudCest
 {
 
@@ -27,8 +29,8 @@ class PostCrudCest
     {
         PostsPage::of($I)->createPost();
         $I->seeCurrentUrlEquals(PostsPage::route('/create'));
-        $I->see('The body field is required.','.error');
-        $I->see('The title field is required.','.error');
+        $I->see('The body field is required.', '.error');
+        $I->see('The title field is required.', '.error');
     }
 
     public function editPost(FunctionalTester $I)
