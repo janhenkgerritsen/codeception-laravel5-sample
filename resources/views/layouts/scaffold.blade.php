@@ -20,6 +20,15 @@
             @endif
 
             @yield('main')
+
+            <div class="well">
+                @if (Auth::user())
+                    Logged in as {{{ Auth::user()->email }}}.
+                    <a href="/auth/logout">Logout</a>
+                @else
+                    Not logged in
+                @endif
+            </div>
         </div>
 
     </body>

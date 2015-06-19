@@ -21,6 +21,7 @@ Route::match(['get', 'post'], 'form', 'HomeController@form');
 
 Route::resource('posts', 'PostsController');
 Route::resource('api/posts', 'Api\PostsController');
+Route::resource('users', 'UsersController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
