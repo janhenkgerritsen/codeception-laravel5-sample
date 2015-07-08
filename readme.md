@@ -1,6 +1,6 @@
 # Sample Laravel Application with Codeception tests.
 
-[![Build Status](https://travis-ci.org/janhenkgerritsen/codeception-laravel5-sample.svg?branch=master)](https://travis-ci.org/janhenkgerritsen/codeception-laravel5-sample)
+[![Build Status](https://travis-ci.org/janhenkgerritsen/codeception-laravel5-sample.svg?branch=codeception-2.0)](https://travis-ci.org/janhenkgerritsen/codeception-laravel5-sample)
 
 ### Setup
 
