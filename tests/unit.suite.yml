@@ -1,6 +1,6 @@
-# Codeception Test Suite Configuration
-
-# suite for unit (internal) tests.
 class_name: UnitTester
 modules:
-    enabled: [Asserts, UnitHelper]
+    enabled: [Laravel5, UnitHelper]
+    config:
+        Laravel5:
+            environment_file: .env.testing
