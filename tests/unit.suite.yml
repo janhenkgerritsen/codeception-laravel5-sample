@@ -1,8 +1,6 @@
 class_name: UnitTester
 modules:
-    enabled:
-        - UnitHelper
-        - Laravel5
+    enabled: [Laravel5, UnitHelper]
     config:
-        - Laravel5:
-            - environment_file: .env.testing
+        Laravel5:
+            environment_file: .env.testing
