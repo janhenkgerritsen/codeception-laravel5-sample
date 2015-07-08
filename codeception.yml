@@ -1,4 +1,13 @@
 actor: Tester
+coverage:
+    enabled: true
+    include:
+        - app/Http/*
+        - app/Post.php
+        - app/User.php
+    exclude:
+        - app/Http/routes.php
+        - app/Http/Kernel.php
 paths:
     tests: tests
     log: tests/_output
