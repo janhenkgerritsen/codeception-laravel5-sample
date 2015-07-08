@@ -21,6 +21,7 @@
 Run Codeception, installed via Composer
 
 ```
+./vendor/bin/codecept build
 ./vendor/bin/codecept run
 ```
 
