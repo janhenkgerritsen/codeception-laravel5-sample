@@ -5,12 +5,11 @@ use Page\Functional\PostsPage;
 
 class AuthCest
 {
-
     private $userAttributes;
 
-    public function  __construct()
+    public function _before()
     {
-        $this->userAttributes= [
+        $this->userAttributes = [
             'email' =>  'john@doe.com',
             'password' => Hash::make('password'),
             'created_at' => new DateTime(),
