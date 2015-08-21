@@ -25,14 +25,6 @@ class PostsPage
         $this->tester = $I;
     }
 
-    /**
-     * @return PostsPage
-     */
-    public static function of(FunctionalTester $I)
-    {
-        return new static($I);
-    }
-
     public function createPost($fields = [])
     {
         $I = $this->tester;
