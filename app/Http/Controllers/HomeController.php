@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Events\TestEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -74,5 +75,15 @@ class HomeController extends Controller {
     {
         return view('special-characters');
     }
+
+	/**
+	 * @return string
+	 */
+	public function fireEvent()
+	{
+		event(new TestEvent());
+
+		return '';
+	}
 
 }
