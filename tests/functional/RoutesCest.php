@@ -24,4 +24,19 @@ class RoutesCest
         $I->see('Domain route');
     }
 
+    public function routesWitTrailingSlashes(FunctionalTester $I)
+    {
+        $I->amOnPage('/');
+        $I->seeCurrentRouteIs('homepage');
+
+        $I->amOnRoute('homepage');
+        $I->seeCurrentRouteIs('homepage');
+
+        $I->amOnPage('/posts');
+        $I->seeCurrentRouteIs('posts.index');
+
+        $I->amOnRoute('posts.index');
+        $I->seeCurrentRouteIs('posts.index');
+    }
+
 }

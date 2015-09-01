@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', ['as' => 'homepage', 'uses' => 'HomeController@index']);
 Route::get('flash', 'HomeController@flash');
 Route::get('back', 'HomeController@back');
 Route::get('secure', 'HomeController@secure');
