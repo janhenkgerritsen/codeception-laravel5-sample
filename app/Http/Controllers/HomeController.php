@@ -41,6 +41,14 @@ class HomeController extends Controller {
 	}
 
 	/**
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function redirect()
+	{
+		return redirect()->route('homepage');
+	}
+
+	/**
 	 * @return \Illuminate\View\View
 	 */
 	public function secure()

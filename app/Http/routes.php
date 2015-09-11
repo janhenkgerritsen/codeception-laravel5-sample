@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', ['as' => 'homepage', 'uses' => 'HomeController@index']);
+Route::get('', ['as' => 'homepage', 'uses' => 'HomeController@index']);
 Route::get('flash', 'HomeController@flash');
 Route::get('back', 'HomeController@back');
+Route::get('redirect', 'HomeController@redirect');
 Route::get('secure', 'HomeController@secure');
 Route::get('session/{message}', 'HomeController@session');
 Route::get('special-characters', 'HomeController@specialCharacters');
