@@ -4,77 +4,78 @@ use App\Events\TestEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class HomeController extends Controller {
+class HomeController extends Controller
+{
 
-	/**
-	 * Constructor.
-	 */
-	public function __construct()
-	{
-		$this->middleware('auth', ['only' => 'secure']);
-	}
-
-	/**
-	 * @return \Illuminate\View\View
-	 */
-	public function index()
-	{
-		return view('hello');
-	}
-
-	/**
-	 * @return \Illuminate\View\View
-	 */
-	public function flash()
-	{
-		Session::flash('message', "It's a flash");
-
-		return view('flash');
-	}
-
-	/**
-	 * @return \Illuminate\Http\RedirectResponse
-	 */
-	public function back()
-	{
-		return redirect()->back();
-	}
-
-	/**
-	 * @return \Illuminate\Http\RedirectResponse
-	 */
-	public function redirect()
-	{
-		return redirect()->route('homepage');
-	}
-
-	/**
-	 * @return \Illuminate\View\View
-	 */
-	public function secure()
-	{
-		return view('hello');
-	}
-
-	/**
-	 * @param Request $request
-	 * @param $message
-	 * @return void
-	 */
-	public function session(Request $request, $message)
-	{
-		$request->session()->set('message', $message);
-	}
-
-	/**
-	 * @return \Illuminate\View\View
+    /**
+     * Constructor.
      */
-	public function form(Request $request)
-	{
-		$message = $request->get('message', '');
+    public function __construct()
+    {
+        $this->middleware('auth', ['only' => 'secure']);
+    }
 
-		return view('form', compact('message'));
-	}
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function index()
+    {
+        return view('hello');
+    }
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function flash()
+    {
+        Session::flash('message', "It's a flash");
+
+        return view('flash');
+    }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function back()
+    {
+        return redirect()->back();
+    }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function redirect()
+    {
+        return redirect()->route('homepage');
+    }
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function secure()
+    {
+        return view('hello');
+    }
+
+    /**
+     * @param Request $request
+     * @param $message
+     * @return void
+     */
+    public function session(Request $request, $message)
+    {
+        $request->session()->set('message', $message);
+    }
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function form(Request $request)
+    {
+        $message = $request->get('message', '');
+
+        return view('form', compact('message'));
+    }
 
     /**
      * @return \Illuminate\View\View
@@ -84,14 +85,27 @@ class HomeController extends Controller {
         return view('special-characters');
     }
 
-	/**
-	 * @return string
-	 */
-	public function fireEvent()
-	{
-		event(new TestEvent());
+    /**
+     * @return string
+     */
+    public function fireEvent()
+    {
+        event(new TestEvent());
 
-		return '';
-	}
+        return '';
+    }
+
+    /**
+     * @param Request $request
+     * @return string
+     */
+    public function validation(Request $request)
+    {
+        $this->validate($request, [
+            'postal_code' => 'required|postal_code'
+        ]);
+
+        return 'Validation success';
+    }
 
 }
