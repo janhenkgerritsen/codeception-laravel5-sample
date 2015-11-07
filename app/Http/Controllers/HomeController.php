@@ -102,7 +102,8 @@ class HomeController extends Controller
     public function validation(Request $request)
     {
         $this->validate($request, [
-            'postal_code' => 'required|postal_code'
+            'post_id'       =>  'required|exists:posts,id',
+            'postal_code'   =>  'required'
         ]);
 
         return 'Validation success';
