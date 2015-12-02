@@ -9,11 +9,6 @@ class EventsCest
 
         $I->amOnPage('fire-event');
         $I->dontSeeRecord('users', ['email' => 'johndoe@example.com']);
-
-        $I->enableEvents();
-
-        $I->amOnPage('fire-event');
-        $I->seeRecord('users', ['email' => 'johndoe@example.com']);
     }
 
     public function seeEventTriggered(FunctionalTester $I)
