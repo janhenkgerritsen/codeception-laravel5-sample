@@ -109,4 +109,36 @@ class HomeController extends Controller
         return 'Validation success';
     }
 
+	/**
+	 * @return string
+	 */
+	public function domain()
+	{
+		return 'Domain route';
+	}
+
+	/**
+	 * @return string
+     */
+	public function subdomain()
+	{
+		return 'Subdomain route';
+	}
+
+	/**
+	 * @return string
+     */
+	public function wildcard()
+	{
+		return 'Wildcard route';
+	}
+
+	/**
+	 * @return string
+     */
+	public function multipleWildcards()
+	{
+		return 'Multiple wildcards route';
+	}
+
 }
