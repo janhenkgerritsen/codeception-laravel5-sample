@@ -25,6 +25,11 @@ class AuthCest
 
         $I->seeCurrentUrlEquals(PostsPage::$url);
         $I->seeAuthentication();
+
+        // Login should persist between requests
+        $I->amOnPage(PostsPage::$url);
+
+        $I->seeAuthentication();
     }
 
     public function loginUsingCredentials(FunctionalTester $I)
@@ -35,6 +40,11 @@ class AuthCest
         $I->amOnPage(PostsPage::$url);
 
         $I->seeCurrentUrlEquals(PostsPage::$url);
+        $I->seeAuthentication();
+
+        // Login should persist between requests
+        $I->amOnPage(PostsPage::$url);
+
         $I->seeAuthentication();
     }
 
