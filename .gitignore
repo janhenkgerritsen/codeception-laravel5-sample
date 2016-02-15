@@ -6,6 +6,7 @@
 /tests/functional/FunctionalTester.php
 /tests/unit/UnitTester.php
 /storage/*.sqlite
+/tags
 .env
 .idea
 composer.lock
