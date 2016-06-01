@@ -5,7 +5,7 @@ set -e
 cd code
 
 sudo -u vagrant -H bash -c "cp .env.testing .env; \
-  composer install; \
+  composer install -n --prefer-dist; \
   if [ ! -f ~/.key_generated ]; then php artisan key:generate; touch ~/.key_generated; fi; \
   touch storage/database.sqlite; \
   touch storage/testing.sqlite; \
