@@ -21,6 +21,8 @@ You can setup this sample manually or use [Vagrant](https://www.vagrantup.com/) 
 
 #### Vagrant
 - Clone repo
+- Cd into the cloned directory
+- Run vagrant up
 
 To SSH into the machine to run your tests, run ```vagrant ssh```. You can access the app on the guest vm under http://192.168.10.10/.
 
