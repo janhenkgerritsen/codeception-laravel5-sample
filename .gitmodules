@@ -1,0 +1,3 @@
+[submodule "homestead"]
+	path = homestead
+	url = https://github.com/laravel/homestead.git

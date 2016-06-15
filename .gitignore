@@ -9,4 +9,5 @@
 /tags
 .env
 .idea
+.vagrant
 composer.lock
