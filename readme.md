@@ -22,9 +22,11 @@ You can setup this sample manually or use [Vagrant](https://www.vagrantup.com/) 
 #### Vagrant
 - Clone repo
 - Cd into the cloned directory
-- Run vagrant up
+- Install git submodules: `git submodule update --init --recursive`
+    - you can also add the `--recursive` flag to the `git clone` command to skip this step
+- Run `vagrant up`
 
-To SSH into the machine to run your tests, run ```vagrant ssh```. You can access the app on the guest vm under http://192.168.10.10/.
+To SSH into the machine to run your tests, run `vagrant ssh`. You can access the app on the guest VM under http://192.168.10.10/.
 
 ### To test
 
