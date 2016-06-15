@@ -1,0 +1,30 @@
+---
+ip: "192.168.10.10"
+memory: 2048
+cpus: 1
+name: "Codeception Laravel 5 Sample"
+provider: virtualbox
+
+folders:
+    - map: "."
+      to: "/home/vagrant/code"
+
+sites:
+    - map: homestead.app
+      to: "/home/vagrant/code/public"
+
+databases:
+    - homestead
+
+# blackfire:
+#     - id: foo
+#       token: bar
+#       client-id: foo
+#       client-token: bar
+
+# ports:
+#     - send: 50000
+#       to: 5000
+#     - send: 7777
+#       to: 777
+#       protocol: udp

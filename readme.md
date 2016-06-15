@@ -4,6 +4,9 @@
 
 ### Setup
 
+You can setup this sample manually or use [Vagrant](https://www.vagrantup.com/) to automatically set up a development environment for you.
+
+#### Manual
 - Clone repo
 - Create your .env file from the example file: `cp .env.testing .env`
 - Install composer dependencies: `composer install`
@@ -15,6 +18,15 @@
     - `php artisan migrate --database=sqlite_testing`
 - Server: run `php -S localhost:8000 -t public`
 - Browse to localhost:8000/posts
+
+#### Vagrant
+- Clone repo
+- Cd into the cloned directory
+- Install git submodules: `git submodule update --init --recursive`
+    - you can also add the `--recursive` flag to the `git clone` command to skip this step
+- Run `vagrant up`
+
+To SSH into the machine to run your tests, run `vagrant ssh`. You can access the app on the guest VM under http://192.168.10.10/.
 
 ### To test
 
