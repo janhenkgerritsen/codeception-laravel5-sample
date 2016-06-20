@@ -25,6 +25,7 @@ Route::get('session/{message}', 'HomeController@session');
 Route::get('special-characters', 'HomeController@specialCharacters');
 Route::get('fire-event', 'HomeController@fireEvent');
 Route::get('validation', 'HomeController@validation');
+Route::get('service-container', 'HomeController@serviceContainer');
 Route::match(['get', 'post'], 'form', 'HomeController@form');
 
 Route::resource('posts', 'PostsController');

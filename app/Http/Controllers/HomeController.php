@@ -102,43 +102,50 @@ class HomeController extends Controller
     public function validation(Request $request)
     {
         $this->validate($request, [
-            'post_id'       =>  'required|exists:posts,id',
-            'postal_code'   =>  'required|postal_code'
+            'post_id' => 'required|exists:posts,id',
+            'postal_code' => 'required|postal_code'
         ]);
 
         return 'Validation success';
     }
 
-	/**
-	 * @return string
-	 */
-	public function domain()
-	{
-		return 'Domain route';
-	}
-
-	/**
-	 * @return string
+    /**
+     * @return string
      */
-	public function subdomain()
-	{
-		return 'Subdomain route';
-	}
+    public function domain()
+    {
+        return 'Domain route';
+    }
 
-	/**
-	 * @return string
+    /**
+     * @return string
      */
-	public function wildcard()
-	{
-		return 'Wildcard route';
-	}
+    public function subdomain()
+    {
+        return 'Subdomain route';
+    }
 
-	/**
-	 * @return string
+    /**
+     * @return string
      */
-	public function multipleWildcards()
-	{
-		return 'Multiple wildcards route';
-	}
+    public function wildcard()
+    {
+        return 'Wildcard route';
+    }
 
+    /**
+     * @return string
+     */
+    public function multipleWildcards()
+    {
+        return 'Multiple wildcards route';
+    }
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function serviceContainer()
+    {
+        return view('service-container');
+    }
 }

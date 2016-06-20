@@ -34,6 +34,9 @@ class AppServiceProvider extends ServiceProvider
             'Illuminate\Contracts\Auth\Registrar',
             'App\Services\Registrar'
         );
+
+        $this->app->bind('App\Test\StringConverter', 'App\Test\ToLowercase');
+        $this->app->addContextualBinding('App\Test\Repeat', '$times', 2);
     }
 
 }
