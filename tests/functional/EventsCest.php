@@ -1,9 +1,32 @@
 <?php
 
+use App\User;
+
 class EventsCest
 {
 
-    public function disablingAndEnablingEvents(FunctionalTester $I)
+    public function disablingModelEvents(FunctionalTester $I)
+    {
+        $user = User::create([
+            'email' => 'john@doe.com',
+            'password' => Hash::make('password'),
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+        ]);
+
+        User::saving(function ($user) {
+            return false;
+        });
+
+        $I->disableModelEvents();
+
+        $user->email = 'updated@example.com';
+        $user->save();
+
+        $I->seeRecord('users', ['email' => 'updated@example.com']);
+    }
+
+    public function disablingEvents(FunctionalTester $I)
     {
         $I->disableEvents();
 
