@@ -5,7 +5,7 @@ class FormErrorsCest
 
     public function _before(FunctionalTester $I)
     {
-        $I->amOnPage('/auth/register');
+        $I->amOnPage('/register');
         $I->click('button[type=submit]');
     }
 

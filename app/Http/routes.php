@@ -30,11 +30,6 @@ Route::post('upload', 'HomeController@upload');
 Route::match(['get', 'post'], 'form', 'HomeController@form');
 
 Route::resource('posts', 'PostsController');
-Route::resource('api/posts', 'Api\PostsController');
+Route::resource('api/posts', 'Api\PostsController', ['as' => 'api']);
 Route::resource('users', 'UsersController');
-
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
-
+Route::auth();

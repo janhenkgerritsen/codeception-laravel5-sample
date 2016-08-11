@@ -2,7 +2,7 @@
 $I = new FunctionalTester($scenario);
 $I->wantTo('register a user');
 
-$I->amOnPage('/auth/register');
+$I->amOnPage('/register');
 $I->fillField('name', 'John Doe');
 $I->fillField('email', 'example@example.com');
 $I->fillField('password', 'password');

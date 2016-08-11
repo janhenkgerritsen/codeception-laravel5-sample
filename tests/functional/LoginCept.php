@@ -9,7 +9,7 @@ $I->haveRecord('users', [
     'updated_at' => new DateTime(),
 ]);
 
-$I->amOnPage('/auth/login');
+$I->amOnPage('/login');
 $I->fillField('email', 'john@doe.com');
 $I->fillField('password', 'password');
 $I->click('button[type=submit]');

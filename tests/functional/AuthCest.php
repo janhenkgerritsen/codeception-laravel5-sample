@@ -52,7 +52,7 @@ class AuthCest
     {
         $I->amOnPage('/secure');
 
-        $I->seeCurrentUrlEquals('/auth/login');
+        $I->seeCurrentUrlEquals('/login');
     }
 
     public function secureRouteWithAuthenticatedUser(FunctionalTester $I)

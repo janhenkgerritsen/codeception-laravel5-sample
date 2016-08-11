@@ -5,7 +5,7 @@ $I = new FunctionalTester($scenario);
 $I->wantTo('edit a profile');
 
 $user = User::create(['email' => 'johndoe@example.com', 'password' => bcrypt('password')]);
-$I->amOnPage('/auth/login');
+$I->amOnPage('/login');
 $I->fillField('email', 'johndoe@example.com');
 $I->fillField('password', 'password');
 $I->click('button[type=submit]');
