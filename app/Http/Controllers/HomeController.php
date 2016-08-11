@@ -148,4 +148,15 @@ class HomeController extends Controller
     {
         return view('service-container');
     }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @return string
+     */
+    public function upload(Request $request)
+    {
+        $uploadedFile = $request->file('file');
+
+        return $uploadedFile->isValid() ? 'Success' : 'Failure';
+    }
 }
