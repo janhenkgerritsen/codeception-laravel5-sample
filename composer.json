@@ -5,8 +5,8 @@
   "license": "MIT",
   "type": "project",
   "require": {
-    "laravel/framework": "5.3.x-dev",
-    "laravelcollective/html": "dev-master",
+    "laravel/framework": "5.3.*",
+    "laravelcollective/html": "5.3.*",
     "flow/jsonpath": "^0.2.4",
     "fzaninotto/faker": "~1.4"
   },
