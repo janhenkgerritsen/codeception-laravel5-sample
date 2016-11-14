@@ -2,13 +2,6 @@
 
 class ServiceContainerCest
 {
-
-    public function _before(FunctionalTester $I)
-    {
-        $I->amOnPage('service-container');
-        $I->seeElement("//p[text()='string to convert']");
-    }
-
     public function testHaveBinding(FunctionalTester $I)
     {
         $I->haveBinding('App\Test\StringConverter', 'App\Test\ToUppercase');
