@@ -1,0 +1,9 @@
+class_name: SeederTester
+modules:
+    enabled:
+        - \Helper\Seeder
+        - Asserts
+        - Laravel5:
+            environment_file: .env.testing
+            run_database_seeder: true
+            database_seeder_class: DatabaseSeeder
