@@ -4,23 +4,24 @@
 
 <h1>Create Post</h1>
 
-{!! Form::open(array('route' => 'posts.store')) !!}
+<form method="post" action="/posts">
+    {{ csrf_field() }}
     <ul>
         <li>
-            {!! Form::label('title', 'Title:') !!}
-            {!! Form::text('title') !!}
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="{{ old('title') }}">
         </li>
 
         <li>
-            {!! Form::label('body', 'Body:') !!}
-            {!! Form::textarea('body') !!}
+            <label for="body">Body:</label>
+            <textarea id="body" name="body" cols="30" rows="10">{{ old('body') }}</textarea>
         </li>
 
         <li>
-            {!! Form::submit('Submit', array('class' => 'btn')) !!}
+            <input type="submit" value="Submit" class="btn">
         </li>
     </ul>
-{!! Form::close() !!}
+</form>
 
 @if ($errors->any())
     <ul>

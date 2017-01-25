@@ -43,7 +43,7 @@ class EventsCest
     public function seeEventTriggeredWithMultipleEvents(FunctionalTester $I)
     {
         $I->amOnPage('fire-event');
-        $I->seeEventTriggered('App\Events\TestEvent', 'kernel.handled');
+        $I->seeEventTriggered('App\Events\TestEvent', 'App\Events\OtherTestEvent');
     }
 
     public function seeEventTriggeredWithEventObject(FunctionalTester $I)

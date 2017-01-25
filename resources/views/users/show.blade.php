@@ -17,7 +17,7 @@
         <tr>
             <td>{{ $user->id }}</td>
             <td>{{ $user->email }}</td>
-            <td>{!! link_to_route('users.edit', 'Edit', array($user->id), array('class' => 'btn btn-info')) !!}</td>
+            <td><a href="/users/{{ $user->id }}/edit" class="btn btn-info">Edit</a></td>
         </tr>
         </tbody>
     </table>

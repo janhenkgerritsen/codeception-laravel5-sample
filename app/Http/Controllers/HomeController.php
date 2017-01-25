@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Events\TestEvent;
+use App\Events\OtherTestEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -64,7 +65,7 @@ class HomeController extends Controller
      */
     public function session(Request $request, $message)
     {
-        $request->session()->set('message', $message);
+        $request->session()->put('message', $message);
     }
 
     /**
@@ -91,6 +92,7 @@ class HomeController extends Controller
     public function fireEvent()
     {
         event(new TestEvent());
+        event(new OtherTestEvent());
 
         return '';
     }

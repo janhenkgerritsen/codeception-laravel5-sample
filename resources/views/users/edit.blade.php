@@ -3,18 +3,20 @@
 @section('main')
 
     <h1>Edit User</h1>
-    {!! Form::model($user, array('method' => 'PATCH', 'route' => array('users.update', $user->id))) !!}
-    <ul>
-        <li>
-            {!! Form::label('email', 'Email') !!}
-            {!! Form::text('email') !!}
-        </li>
-        <li>
-            {!! Form::submit('Update', array('class' => 'btn btn-info')) !!}
-            {!! link_to_route('users.show', 'Cancel', $user->id, array('class' => 'btn')) !!}
-        </li>
-    </ul>
-    {!! Form::close() !!}
+    <form method="post" action="/users/{{ $user->id }}">
+        {{ csrf_field() }}
+        {{ method_field('patch') }}
+        <ul>
+            <li>
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" value="{{ old('email', $user->email) }}">
+            </li>
+            <li>
+                <input type="submit" value="Update" class="btn btn-info">
+                <a href="/users/{{ $user->id }}" class="btn">Cancel</a>
+            </li>
+        </ul>
+    </form>
 
     @if ($errors->any())
         <ul>

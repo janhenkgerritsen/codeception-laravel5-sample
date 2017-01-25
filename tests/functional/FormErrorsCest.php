@@ -9,7 +9,7 @@ class FormErrorsCest
         $I->click('button[type=submit]');
     }
 
-    public function testFormHasErrors(FunctionalTester $I)
+    public function testSeeFormHasErrors(FunctionalTester $I)
     {
         $I->seeFormHasErrors();
     }

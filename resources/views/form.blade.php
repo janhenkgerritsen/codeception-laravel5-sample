@@ -5,8 +5,8 @@
         Your message: {{ $message }}
     </p>
 
-    {!! Form::open() !!}
-        {!! Form::text('message') !!}
-        {!! Form::submit('Submit') !!}
-    {!! Form::close() !!}
+    <form action="/form">
+        <input type="text" name="message">
+        <input type="submit" value="Submit">
+    </form>
 @stop

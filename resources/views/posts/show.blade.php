@@ -4,7 +4,7 @@
 
 <h1>Show Post</h1>
 
-<p>{!! link_to_route('posts.index', 'Return to all posts') !!}</p>
+<p><a href="/posts">Return to all posts</a></p>
 
 <table class="table table-striped table-bordered">
     <thead>
@@ -18,11 +18,13 @@
         <tr>
             <td>{{ $post->title }}</td>
             <td>{{ $post->body }}</td>
-            <td>{!! link_to_route('posts.edit', 'Edit', array($post->id), array('class' => 'btn btn-info')) !!}</td>
+            <td><a href="/posts/{{ $post->id }}/edit" class="btn btn-info">Edit</a></td>
             <td>
-                {!! Form::open(array('method' => 'delete', 'route' => array('posts.destroy', $post->id))) !!}
-                    {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
-                {!! Form::close() !!}
+                <form method="post" action="/posts/{{ $post->id }}">
+                    {{ csrf_field() }}
+                    {{ method_field('delete') }}
+                    <input type="submit" value="Delete" class="btn btn-danger">
+                </form>
             </td>
         </tr>
     </tbody>

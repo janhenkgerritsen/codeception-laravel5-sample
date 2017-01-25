@@ -4,7 +4,7 @@
 
 <h1>All Posts</h1>
 
-<p>{!! link_to_route('posts.create', 'Add new post') !!}</p>
+<p><a href="/posts/create">Add new post</a></p>
 
 @if ($posts->count())
     <table class="table table-striped table-bordered">
@@ -20,11 +20,13 @@
                 <tr>
                     <td>{{ $post->title }}</td>
 					<td>{{ $post->body }}</td>
-                    <td>{!! link_to_route('posts.edit', 'Edit', array($post->id), array('class' => 'btn btn-info')) !!}</td>
+                    <td><a href="/posts/{{ $post->id }}/edit" class="btn btn-info">Edit</a></td>
                     <td>
-                        {!! Form::open(array('method' => 'DELETE', 'route' => array('posts.destroy', $post->id))) !!}
-                            {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
-                        {!! Form::close() !!}
+                        <form method="post" action="/posts/{{ $post->id }}">
+                            {{ csrf_field() }}
+                            {{ method_field('delete') }}
+                            <input type="submit" value="Delete" class="btn btn-danger">
+                        </form>
                     </td>
                 </tr>
             @endforeach

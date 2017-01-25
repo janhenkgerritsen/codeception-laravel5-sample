@@ -3,24 +3,26 @@
 @section('main')
 
 <h1>Edit Post</h1>
-{!! Form::model($post, array('method' => 'PATCH', 'route' => array('posts.update', $post->id))) !!}
+<form method="post" action="/posts/{{ $post->id }}">
+    {{ csrf_field() }}
+    {{ method_field('patch') }}
     <ul>
         <li>
-            {!! Form::label('title', 'Title:') !!}
-            {!! Form::text('title') !!}
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="{{ old('title', $post->title) }}">
         </li>
 
         <li>
-            {!! Form::label('body', 'Body:') !!}
-            {!! Form::textarea('body') !!}
+            <label for="body">Body:</label>
+            <textarea id="body" name="body" cols="30" rows="10">{{ old('body', $post->body) }}</textarea>
         </li>
 
         <li>
-            {!! Form::submit('Update', array('class' => 'btn btn-info')) !!}
-            {!! link_to_route('posts.show', 'Cancel', $post->id, array('class' => 'btn')) !!}
+            <input type="submit" value="Update" class="btn btn-info">
+            <a href="/posts/{{ $post->id }}" class="btn">Cancel</a>
         </li>
     </ul>
-{!! Form::close() !!}
+</form>
 
 @if ($errors->any())
     <ul>
