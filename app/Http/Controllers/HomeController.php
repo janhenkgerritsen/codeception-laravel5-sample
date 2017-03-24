@@ -152,6 +152,14 @@ class HomeController extends Controller
     }
 
     /**
+     * @return string
+     */
+    public function testValue()
+    {
+        return 'Test value is ' . config('test_value');
+    }
+
+    /**
      * @param \Illuminate\Http\Request $request
      * @return string
      */

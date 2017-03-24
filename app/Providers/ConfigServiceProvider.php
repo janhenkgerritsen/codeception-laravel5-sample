@@ -16,7 +16,7 @@ class ConfigServiceProvider extends ServiceProvider {
 	public function register()
 	{
 		config([
-			//
+		    'test_value' => 5,
 		]);
 	}
 
